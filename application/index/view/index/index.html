@@ -1,0 +1,188 @@
+{include file="public::header"}
+
+<body>
+<div class="container">
+    <div class="row">
+        {include file="public::nav"}
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>User Registration</h2>
+            </div>
+            <form class="form-horizontal" onsubmit="return false;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Registration</div>
+                    <div class="panel-body">
+
+
+
+                <fieldset id="regi">
+                <div class="form-group">
+                    <label for="member" class="col-sm-2 control-label">Member Id</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control vfield" id="member" name="member" placeholder="Type Chamber member Id of your company">
+                    </div>
+                    <div class="col-sm-3 tip"></div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="col-sm-2 control-label">Title</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="title" name="title">
+                            <option value="Mr.">Mr.</option>
+                            <option value="Ms.">Ms.</option>
+                            <option value="Dr.">Dr.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="f_name" class="col-sm-2 control-label">First Name</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control vname" id="f_name" name="f_name">
+                    </div>
+                    <label for="l_name" class="col-sm-2 control-label">Last Name</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control vname" id="l_name" name="l_name">
+                    </div>
+                    <div class="col-sm-3 tip"></div>
+                </div>
+                <div class="form-group">
+                    <label for="company" class="col-sm-2 control-label">Company</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control vfield" id="company" name="company" placeholder="Type Your Company Name">
+                    </div>
+                    <div class="col-sm-3 tip"></div>
+                </div>
+                <div class="form-group">
+                    <label for="position" class="col-sm-2 control-label">Position</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="position" name="position" placeholder="Type your Position">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control vfield" id="email" name="email" placeholder="Type email address with correct format">
+                    </div>
+                    <div class="col-sm-3 tip"></div>
+                </div>
+                <div class="form-group">
+                    <label for="mobile" class="col-sm-2 control-label">Mobile Phone Number</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control vfield" id="mobile" name="mobile" placeholder="Type mobile phone number (11 digits)">
+                    </div>
+                    <div class="col-sm-3 tip"></div>
+                </div>
+                <div class="form-group">
+                    <label for="amount" class="col-sm-2 control-label">Amount of Tickets Ordered</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="amount" name="amount">
+                            <option value=2>2</option>
+                            <option value=4>4</option>
+                            <option value=6>6</option>
+                            <option value=8>8</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Menu</label>
+                    <div class="col-sm-6">
+                        <label class="radio-inline">
+                            <input type="radio" name="menu" id="vegetarian" value="vegetarian"> Vegetarian
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="menu" id="normal" value="normal" checked > Normal
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Remarks</label>
+                    <div class="col-sm-6">
+                        <textarea rows="3" cols="75" ></textarea>
+                    </div>
+                </div>
+                </fieldset>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Payment</div>
+                    <div class="panel-body">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="address_tk" class="col-sm-2 control-label">Ticket Mailing Address</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control vfield" id="address_tk" name="address_tickets" placeholder="Type your tickets mailing address ">
+                        </div>
+                        <div class="col-sm-3 tip"></div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Do you need invoice?</label>
+                        <div class="col-sm-6">
+
+                                <div class="switch"  id="invoice">
+                                    <input id="fapiao_need" name="fapiao_need" type="checkbox" value=1 checked="checked" />
+                                </div>
+
+                        </div>
+                    </div>
+                    <div id="paymentInfo">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Invoice Type</label>
+                        <div class="col-sm-6">
+                            <label class="radio-inline">
+                                <input type="radio" name="fapiao_type" id="iv_ele" value="E-Invoice" checked> E-Invoice
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="fapiao_type" id="iv_paper" value="Paper"> Paper
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="iv_title" class="col-sm-2 control-label">Invoice Title</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control vfield" id="iv_title" name="title_fapiao" placeholder="Type your company name in Chinese ">
+                        </div>
+                        <div class="col-sm-3 tip"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tax_num" class="col-sm-2 control-label">Tax Number</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control vfield" id="tax_num" name="taxnumber" placeholder="Type your tax number ">
+                        </div>
+                        <div class="col-sm-3 tip"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address_iv" class="col-sm-2 control-label">Invoice Mailing Address</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control vfield" id="address_iv" name="address_fapiao" placeholder="Type your invoice mailing address ">
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="usesame">
+                                    Use ticket mailing address
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 tip"></div>
+                    </div>
+                    </div>
+                </fieldset>
+                        </div>
+
+            </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-10 col-sm-6">
+                        <button class="btn btn-primary" id="send">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+{include file="public::footer"}
+
