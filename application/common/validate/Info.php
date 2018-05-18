@@ -28,7 +28,7 @@ class Info extends Validate
             'email'=>'email',
             'unique'=>'dinnerdance'
         ],
-        'mobile|Mobile Phone Number'=>'mobile',
+        'mobile|Mobile Phone Number'=>'require|mobile',
         'amount|Amount of Tickets'=>'integer',
         'fapiao_need'=>'boolean',
         'address_tickets|Ticket Mailing Address'=>[
@@ -45,5 +45,20 @@ class Info extends Validate
             'alphaNum'
             ]
 
+    ];
+
+    protected $scene=[
+        'edit'=>['member|Member Number',
+            'f_name|First Name',
+            'l_name|last Name',
+            'company|Company Name',
+            'mobile|Mobile Phone Number',
+            'amount|Amount of Tickets',
+            'fapiao_need',
+            'address_tickets|Ticket Mailing Address',
+            'address_fapiao|Invoice Mailing Address',
+            'title_fapiao|Invoice Title',
+            'taxnumber|Tax Number'
+        ]
     ];
 }

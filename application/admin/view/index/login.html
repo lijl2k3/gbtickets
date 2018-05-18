@@ -1,0 +1,55 @@
+{include file="public::header"}
+
+<body>
+<div id="login_bg">
+    <form class="form-horizontal" onsubmit="return false;">
+    <div id="login" style="position:absolute;top:50%; left:50%; width:480px;height:420px; margin-left:-240px; margin-top:-210px; background: #f1f3f4">
+        <div class="panel panel-default">
+            <div class="panel-heading">Login</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="user" class="col-sm-4 control-label">User Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control vfield" id="user" name="member" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pass" class="col-sm-4 control-label">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control vfield" id="pass" name="password" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 wrap">
+                <div class="choice">Dinner & Dance
+                    <input type="radio" name="choice" value="0" >
+                </div>
+            </div>
+            <div class="col-md-6 wrap">
+                <div class="choice">Ball Room
+                    <input type="radio" name="choice" value="1">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row" style="margin-top:30px;">
+            <div class="col-md-offset-1 col-md-10 "><button id="login_btn" class="btn btn-block btn-success">Login</button></div>
+        </div>
+
+    </div>
+    </form>
+</div>
+<script>
+
+    $('#login_btn').click(function(){
+        if( $('input[name="choice"]:checked').val()==undefined){
+            alert('Please choose one ticket type!')
+            return false;
+        }
+
+    })
+</script>
+</body>

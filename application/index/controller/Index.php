@@ -4,7 +4,7 @@ namespace app\index\controller;
 use app\common\controller\Base;
 use think\Validate;
 use think\facade\Request;
-use app\model\Dinnerdance;
+use app\common\model\Dinnerdance;
 
 class Index extends Base
 {

@@ -1,0 +1,161 @@
+{include file="public::header"}
+
+<body>
+<div class="container">
+    <div class="row">
+        {include file="public::nav"}
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>Dinner & Dance</h2>
+            </div>
+            <div class="row searchline">
+                <div class="col-md-12">
+                    <form class="form-inline" method="post" action="{:url('index')}">
+                        <div class="form-group searchfield">
+                            <label class="sr-only" for="search_member">Member</label>
+                            <input type="text" class="form-control small searchkey" id="search_member" name="member" placeholder="Member Id" {notempty name="search.member"} value="{$search.member}"{/notempty} >
+                            {notempty name="search.member"}<div class="searchx">x</div>{/notempty}
+                        </div>
+                        <div class="form-group searchfield">
+                            <label class="sr-only" for="search_fname">First Name</label>
+                            <input type="text" class="form-control small searchkey" id="search_fname" name="f_name" placeholder="First Name" style="width:80px" {notempty name="search.f_name"} value="{$search.f_name}"{/notempty}>
+                            {notempty name="search.f_name"}<div class="searchx">x</div>{/notempty}
+                        </div>
+                        <div class="form-group searchfield">
+                            <label class="sr-only" for="search_lname">Last Name</label>
+                            <input type="text" class="form-control small searchkey" id="search_lname" name="l_name" placeholder="Last Name" style="width:80px" {notempty name="search.l_name"} value="{$search.l_name}"{/notempty}>
+                            {notempty name="search.l_name"}<div class="searchx">x</div>{/notempty}
+                        </div>
+                        <div class="form-group searchfield">
+                            <label class="sr-only" for="search_company">Company</label>
+                            <input type="text" class="form-control small searchkey" id="search_company" name="company" placeholder="Company Name" {notempty name="search.company"} value="{$search.company}"{/notempty}>
+                            {notempty name="search.company"}<div class="searchx">x</div>{/notempty}
+                        </div>
+                        <div class="form-group searchfield">
+                            <label class="sr-only" for="search_email">Email</label>
+                            <input type="email" class="form-control small searchkey" id="search_email"name="email" placeholder="Email" {notempty name="search.email"} value="{$search.email}"{/notempty}>
+                            {notempty name="search.email"}<div class="searchx">x</div>{/notempty}
+                        </div>
+                        <div class="form-group searchfield">
+                            <label class="sr-only" for="search_mobile">Mobile</label>
+                            <input type="text" class="form-control small searchkey" id="search_mobile" name="mobile" placeholder="Mobile" {notempty name="search.mobile"} value="{$search.mobile}"{/notempty}>
+                            {notempty name="search.mobile"}<div class="searchx">x</div>{/notempty}
+                        </div>
+                        <a href="#" id="sendSearch"><i class=" glyphicon glyphicon-search"></i></a>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Reservation List</div>
+                <div class="panel-body">
+                    <table class="table table-condensed table-striped table-hover">
+                        <tbody>
+                        <tr>
+                            <th width="100px">Member Id</th>
+                            <th width="100px">First Name</th>
+                            <th width="100px">Last Name</th>
+                            <th width="240px">Company</th>
+                            <th width="160px">Email</th>
+                            <th width="120px" >Tickets Amount</th>
+                            <th width="200px"></th>
+                        </tr>
+                        {volist name='list' id='list'}
+                        <tr id="{$list.Id}">
+                            <td>{$list.member}</td>
+                            <td>{$list.f_name}</td>
+                            <td>{$list.l_name}</td>
+                            <td>{$list.company}</td>
+                            <td>{$list.email}</td>
+                            <td align="center"><span class="badge">{$list.amount}</span></td>
+                            <td align="center">
+                                <div class="row" width="80px">
+                                    <div class="col-sm-4"><a href={:url('view','id='.$list.Id)}><i class="glyphicon glyphicon-eye-open"></i></a>  </div>
+                                    <div class="col-sm-4"><a href="{:url('edit','id='.$list.Id)}"><i class="glyphicon glyphicon-pencil"></i></a> </div>
+                                    <div class="col-sm-4"><a href="#" class="remove" data-toggle="modal" data-target="#delobj" data-id="{$list.Id}"><i class="glyphicon glyphicon-remove"></i> </a></div>
+                                </div>
+                            </td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                    {$page|raw}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="delobj">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Remove User Record</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-data">
+                    </div>
+
+                    <div class="alert alert-danger" role="alert">Are you sure to remove this data?</div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="dataid" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary btn-danger" id="opt_del">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+<script>
+    $('#delobj').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        var modal = $(this);
+        $.get("{:url('brief')}"+'?id='+id,function(data){
+           modal.find('.modal-data').html(data);
+            modal.find('.modal-footer input').val(id);
+        });
+
+        //modal.find('.modal-body input').val(recipient)
+    });
+    $('#delobj').on('hide.bs.modal',function(event){
+        $(this).find('.modal-data').html('');
+        $(this).find('.modal-footer input').val('');
+    })
+    $('#opt_del').click(function(){
+        $.ajax({
+            type: 'post',
+            url: "{:url('remove')}",
+            data: {'id':$(this).parent().find('input').val()},
+            dataType: 'json',
+            success: function (data) {
+                if (data.status !== 1) {
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                    window.location.href="{:url('index')}";
+                }
+
+            }
+        });
+    })
+
+    $('.searchkey').change(function(){
+       $(this).parent().append('<div class="searchx">x</div>');
+    })
+
+    $('.searchfield').on('click','.searchx',function(){
+        $(this).prev().val('');
+        $(this).remove();
+    })
+
+    $('#sendSearch').click(function(){
+       $('form').submit();
+    })
+</script>
+</body>
+{include file="public::footer"}
+

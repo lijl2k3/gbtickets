@@ -1,0 +1,120 @@
+{include file="public::header"}
+
+<body>
+<div class="container">
+    <div class="row">
+        {include file="public::nav"}
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>Dinner & Dance</h2>
+            </div>
+            <div class="col-md-10 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">User Info</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <ul class="details">
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Member Id:</span></div>
+                            <div class="col-md-8">{$user.member}</div>
+                            </li>
+
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">First Name:</span></div>
+                            <div class="col-md-8">{$user.f_name}</div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Last Name:</span></div>
+                            <div class="col-md-8 ">{$user.l_name}</div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Company:</span></div>
+                            <div class="col-md-8 ">{$user.company}</div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Position:</span></div>
+                            <div class="col-md-8">{$user.position}</div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Email:</span></div>
+                            <div class="col-md-8">{$user.email}</div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Mobile Phone:</span></div>
+                            <div class="col-md-8">{$user.mobile}</div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Menu:</span></div>
+                            <div class="col-md-8">{$user.menu}</div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Tickets Amount:</span></div>
+                            <div class="col-md-8"><span class="badge">{$user.amount}</span></div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Ticket Mailing Address:</span></div>
+                            <div class="col-md-8">{$user.address_tickets}</div>
+                            </li>
+                            <li class="col-md-11">
+                            <div class="col-md-4 title"><span class="label label-primary">Need Invoice?</span></div>
+                            <div class="col-md-8">
+                                {eq name="user.fapiao_need" value="1"}
+                                YES
+                                {else/}
+                                NO
+                                {/eq}
+                            </div>
+                            </li>
+                            {eq name="user.fapiao_need" value="1"}
+                            <li class="col-md-11">
+                                <div class="col-md-4 title"><span class="label label-primary">Invoice Mailing Address:</div>
+                                <div class="col-md-8">{$user.address_fapiao}</div>
+                            </li>
+                            <li class="col-md-11">
+                                <div class="col-md-4 title"><span class="label label-primary">Invoice Title:</div>
+                                <div class="col-md-8">{$user.title_fapiao}</div>
+                            </li>
+                            <li class="col-md-11">
+                                <div class="col-md-4 title"><span class="label label-primary">Tax Number:</div>
+                                <div class="col-md-8">{$user.taxnumber}</div>
+                            </li>
+                            <li class="col-md-11">
+                                <div class="col-md-4 title"><span class="label label-primary">Invoice Type:</div>
+                                <div class="col-md-8">{$user.fapiao_type}</div>
+                            </li>
+                            {/eq}
+                            <li class="col-md-11">
+                                <div class="col-md-4 title"><span class="label label-primary">Registration Time:</div>
+                                <div class="col-md-8">{$user.create_time}</div>
+                            </li>
+                            <li class="col-md-11">
+                                <div class="col-md-4 title"><span class="label label-primary">Update Time:</div>
+                                <div class="col-md-8">{$user.update_time}</div>
+                            </li>
+                            {notempty name="user.remarks"}
+                            <li class="col-md-11">
+                                <div class="col-md-4 title"><span class="label label-primary">Remarks:</div>
+                                <div class="col-md-8">{$user.remarks}</div>
+                            </li>
+                            {/notempty}
+                            <li class="col-md-12 lastline">
+                                <div class="col-md-offset-11">
+                                    <a class="btn btn-cancel" id="back" href="#">Back</a>
+                                </div>
+
+                            </li>
+                            </ul>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+{include file="public::footer"}
+

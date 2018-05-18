@@ -18,6 +18,7 @@
             $('#invoice input').on('switchChange.bootstrapSwitch', function (event,state) {
                 if(state==false){
                     $('#fapiao_need').val(0);
+                    $('#paymentInfo').find('.tip').html('');
                 }
                 else{
                     $('#fapiao_need').val(1);

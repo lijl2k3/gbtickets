@@ -20,7 +20,7 @@ class Verify extends Controller
         'l_name'=>['rule'=>'require|max:20|chsAlpha','alias'=>'Last Name'],
         'company'=>['rule'=>'require|max:120','alias'=>'Company Name'],
         'email'=>['rule'=>'require|email|unique:dinnerdance','alias'=>'Email'],
-        'mobile'=>['rule'=>'mobile','alias'=>'Mobile Phone Number'],
+        'mobile'=>['rule'=>'require|mobile','alias'=>'Mobile Phone Number'],
         'amount'=>['rule'=>'integer','alias'=>'Amount of Tickets'],
         'address_tickets'=>['rule'=>'require','alias'=>'Ticket Mailing Address'],
         'address_fapiao'=>['rule'=> 'require','alias'=>'Invoice Mailing Address'],
